@@ -1,15 +1,24 @@
-import "./App.css";
-import "animate.css";
+import { useEffect, useState } from "react";
 
 import Button from "@mui/material/Button";
 import { DataGrid } from "@mui/x-data-grid";
 
+import "./App.css";
+import "animate.css";
+
+const API_URL = process.env.REACT_APP_API_URL;
+
 function App() {
-  const rows = [
-    { id: 1, note: "Buy vegetables", description: "" },
-    { id: 2, note: "Do laundry", description: "Urgent" },
-    { id: 3, note: "Call mom", description: "" },
-  ];
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    fetch(API_URL + "/notes").then((response) =>
+      response.json().then((data) => {
+        setNotes(data);
+        console.log(data);
+      })
+    );
+  }, []);
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.1 },
@@ -40,7 +49,7 @@ function App() {
       </div>
 
       <div className="data-grid">
-        <DataGrid checkboxSelection={true} rows={rows} columns={columns} />
+        <DataGrid checkboxSelection={true} rows={notes} columns={columns} />
       </div>
     </div>
   );
