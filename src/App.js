@@ -1,23 +1,27 @@
 import "./App.css";
+import "animate.css";
 
 import Button from "@mui/material/Button";
 import { DataGrid } from "@mui/x-data-grid";
 
 function App() {
   const rows = [
-    { id: 1, col1: "Hello", col2: "World" },
-    { id: 2, col1: "DataGridPro", col2: "is Awesome" },
-    { id: 3, col1: "MUI", col2: "is Amazing" },
+    { id: 1, note: "Buy vegetables", description: "" },
+    { id: 2, note: "Do laundry", description: "Urgent" },
+    { id: 3, note: "Call mom", description: "" },
   ];
 
   const columns = [
-    { field: "col1", headerName: "Column 1", width: 150 },
-    { field: "col2", headerName: "Column 2", width: 150 },
+    { field: "id", headerName: "ID", flex: 0.1 },
+    { field: "note", headerName: "Note", flex: 0.3 },
+    { field: "description", headerName: "Description", flex: 1 },
   ];
 
   return (
     <div className="App">
-      <h1 className="header">Simple notes app</h1>
+      <h1 className="header animate__animated animate__pulse animate__infinite">
+        Simple notes app
+      </h1>
 
       <h2 className="intro-message">Insert your knowledge here</h2>
 
