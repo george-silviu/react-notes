@@ -6,13 +6,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import "./App.css";
 import "animate.css";
 
-const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080/api";
 
 function App() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/api/notes`).then((response) =>
+    console.log(apiUrl);
+    fetch(`${apiUrl}/notes`).then((response) =>
       response
         .json()
         .then((data) => {
